@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // @SpringBootApplication
 public class SpringTrainSimple012020Application {
 
-  public static void mainNoMain(String[] args) {
-    //SpringApplication.run(SpringTrainSimple012020Application.class, args);
+  public static void mainNoApp(String[] args) {
+    // SpringApplication.run(SpringTrainSimple012020Application.class, args);
   }
 
 }
