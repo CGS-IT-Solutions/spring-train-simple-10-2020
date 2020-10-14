@@ -1,6 +1,7 @@
 package at.cgsit.training.firstexample.repository;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +13,7 @@ import java.util.List;
  * spring data respository
  */
 @Repository
+@Profile({"default", "prod"})
 public interface ChatMessageRepository extends CrudRepository<ChatMessage, Long> {
 
   List<ChatMessage> findBySender(String sender);
