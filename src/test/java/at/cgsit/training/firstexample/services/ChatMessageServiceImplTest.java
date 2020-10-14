@@ -23,10 +23,13 @@ class ChatMessageServiceImplTest {
 
   @Autowired
   @Qualifier("devChatMessageServiceImpl")
+  // @Qualifier("chatMessageServiceImpl")
   private ChatMessageService chatMessageService;
 
   @ParameterizedTest
-  @ValueSource(strings = {"chris", "franky"})
+  @ValueSource(strings = {
+      "chris",
+      "franky"})
   public void testFindBySenderWithOrderBy(String userName) {
 
     List<ChatMessage> chris = chatMessageService.findBySender(userName);
