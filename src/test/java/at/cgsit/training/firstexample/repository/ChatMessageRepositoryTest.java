@@ -17,6 +17,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.springframework.test.jdbc.JdbcTestUtils;
 
+import java.util.List;
+
 
 //@DataJpaTest
 @SpringBootTest
@@ -30,8 +32,18 @@ public class ChatMessageRepositoryTest {
 
   @BeforeEach
   public void tearDown() {
-    // JdbcTestUtils.deleteFromTables(jdbcTemplate, "chat_message");
+      // JdbcTestUtils.deleteFromTables(jdbcTemplate, "chat_message");
   }
+
+  @Test
+  public void testFindBySender() {
+
+    List<ChatMessage> bySender = chatMessageRepository.findBySender("Chris");
+
+    assertThat(bySender).isNotNull();
+    assertThat(bySender.size()).isGreaterThan(1);
+  }
+
 
   @Test
   public void testPersistence() {
@@ -48,7 +60,6 @@ public class ChatMessageRepositoryTest {
     chatMessage.setSender("Chris");
     chatMessage.setId(null);
     chatMessageRepository.save(chatMessage);
-
 
     assertThat(saved.getId()).isNotNull();
     assertThat(chatMessage.getId()).isNotNull();
