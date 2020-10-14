@@ -1,10 +1,8 @@
 package at.cgsit.training.firstexample.chat.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 public class ChatMessage implements Serializable {
@@ -13,15 +11,24 @@ public class ChatMessage implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Basic(optional = true)
   private MessageType type;
 
+  @Basic(optional = false)
+  @Column(name = "content", length = 500, nullable = false)
   private String content;
 
+  @Basic(optional = false)
+  @Column(name = "sender", length = 100, nullable = false)
   private String sender;
 
+  @Basic(optional = true)
+  @Column(name = "recipient", length = 100, nullable = false)
   private String recipient;
 
-
+  @Basic(optional = false)
+  @Column(name = "erstelldatum", nullable = false)
+  private java.time.LocalDateTime erstelldatum = LocalDateTime.now();
 
   public void setId(Long id) {
     this.id = id;
@@ -68,4 +75,13 @@ public class ChatMessage implements Serializable {
     this.recipient = recipient;
     return this;
   }
+
+  public LocalDateTime getErstelldatum() {
+    return erstelldatum;
+  }
+
+  public void setErstelldatum(LocalDateTime erstelldatum) {
+    this.erstelldatum = erstelldatum;
+  }
+
 }
