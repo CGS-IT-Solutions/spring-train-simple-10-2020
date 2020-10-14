@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface ChatMessageRepository extends CrudRepository<ChatMessage, Long> {
 
+  List<ChatMessage> findBySender(String sender);
+
 }

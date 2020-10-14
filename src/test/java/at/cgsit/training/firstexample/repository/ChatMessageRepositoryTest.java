@@ -37,7 +37,7 @@ public class ChatMessageRepositoryTest {
   public void testPersistence() {
     //given
     ChatMessage chatMessage = new ChatMessage();
-    chatMessage.setSender("john doe");
+    chatMessage.setSender("John Doe");
     chatMessage.setContent("TestMessage ChatMessageRepositoryTest");
     chatMessage.setRecipient("frank");
     chatMessage.setType(MessageType.CHAT);

@@ -2,7 +2,9 @@
 
 
 create database springdemo
+
 create user 'springuser'@'%' identified by 'springuser12‘
+
 grant all on springdemo.* to 'springuser'@'%‘;
 
 
