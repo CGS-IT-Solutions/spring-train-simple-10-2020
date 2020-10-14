@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class SingletonPropertyExampleTest {
 
-  @Autowired SingletonPropertyExample singletonPropertyExample;
+  @Autowired
+  SingletonPropertyExample singletonPropertyExample;
 
   @Test void simpleTestComponentEchoTest() {
 

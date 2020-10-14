@@ -11,13 +11,14 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("singleton") // change to prototype
 @PropertySource("classpath:myextra.properties")
+// @PropertySource("file:${app.home}/app.properties")
 public class SingletonPropertyExample {
 
   Logger logger = LoggerFactory.getLogger(TestComponent.class);
 
-  @Autowired Environment env;
+  @Autowired
+  Environment env;
 
   @Value("${myapp.name}")
   private String name;

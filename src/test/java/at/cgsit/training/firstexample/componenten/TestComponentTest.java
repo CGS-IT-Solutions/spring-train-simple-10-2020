@@ -18,5 +18,4 @@ class TestComponentTest {
     assertThat(test_it).isEqualTo("test it");
   }
 
-
 }
