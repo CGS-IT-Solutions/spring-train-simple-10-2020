@@ -21,6 +21,8 @@ public class ChatMessage implements Serializable {
 
   private String recipient;
 
+
+
   public void setId(Long id) {
     this.id = id;
   }

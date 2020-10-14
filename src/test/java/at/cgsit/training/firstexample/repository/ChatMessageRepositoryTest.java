@@ -38,13 +38,19 @@ public class ChatMessageRepositoryTest {
     //given
     ChatMessage chatMessage = new ChatMessage();
     chatMessage.setSender("john doe");
-    chatMessage.setContent("test message ChatMessageRepositoryTest");
+    chatMessage.setContent("TestMessage ChatMessageRepositoryTest");
     chatMessage.setRecipient("frank");
     chatMessage.setType(MessageType.CHAT);
 
     //when
     ChatMessage saved = chatMessageRepository.save(chatMessage);
 
+    chatMessage.setSender("Chris");
+    chatMessage.setId(null);
+    chatMessageRepository.save(chatMessage);
+
+
+    assertThat(saved.getId()).isNotNull();
     assertThat(chatMessage.getId()).isNotNull();
 
     ChatMessage newChatMessage1 = chatMessageRepository.findById(chatMessage.getId()).orElse(null);
