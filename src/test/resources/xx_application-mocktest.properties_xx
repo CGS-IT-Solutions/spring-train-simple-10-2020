@@ -1,0 +1,5 @@
+
+
+spring.jpa.show-sql=true
+
+myapp.myValue=Das wurde Konfiguriert in classpath application.properties mit Profile MOCKTEST 

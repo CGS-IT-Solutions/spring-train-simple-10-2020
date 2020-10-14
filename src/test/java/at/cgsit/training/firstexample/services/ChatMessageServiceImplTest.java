@@ -1,6 +1,7 @@
 package at.cgsit.training.firstexample.services;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
+import at.cgsit.training.firstexample.componenten.SingletonPropertyExample;
 import at.cgsit.training.firstexample.repository.ChatMessageRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 
@@ -17,14 +19,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@ActiveProfiles( {"mocktest", "default" }) // use "dummy" if you like the DevChatMesageService itself
 class ChatMessageServiceImplTest {
 
   Logger logger = LoggerFactory.getLogger(ChatMessageRepositoryTest.class);
 
-  @Autowired
-  @Qualifier("devChatMessageServiceImpl")
+  // @Qualifier("devChatMessageServiceImpl")
   // @Qualifier("chatMessageServiceImpl")
+  @Autowired
   private ChatMessageService chatMessageService;
+
+  @Autowired
+  private SingletonPropertyExample singletonPropertyExample;
+
+  @Test
+  public void testSimpleProperty() {
+    String message = singletonPropertyExample.getMessage();
+    assertThat(message).isNotNull();
+    logger.info("singletonPropertyExample messagage: {}", message);
+  }
+
 
   @ParameterizedTest
   @ValueSource(strings = {

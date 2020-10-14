@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("classpath:myextra.properties")
+// @PropertySource("classpath:myextra.properties")
 // @PropertySource("file:${app.home}/app.properties")
 public class SingletonPropertyExample {
 

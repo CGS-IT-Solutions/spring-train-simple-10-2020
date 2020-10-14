@@ -4,6 +4,7 @@ import at.cgsit.training.firstexample.chat.model.ChatMessage;
 import at.cgsit.training.firstexample.dto.ChatMessageDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@Profile("dummy")
 public class DevChatMessageServiceImpl implements ChatMessageService {
 
   Logger logger = LoggerFactory.getLogger(DevChatMessageServiceImpl.class);
