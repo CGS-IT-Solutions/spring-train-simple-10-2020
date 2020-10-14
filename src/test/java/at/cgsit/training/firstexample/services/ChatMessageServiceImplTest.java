@@ -2,6 +2,7 @@ package at.cgsit.training.firstexample.services;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
 import at.cgsit.training.firstexample.componenten.SingletonPropertyExample;
+import at.cgsit.training.firstexample.repository.ChatMessageRepository;
 import at.cgsit.training.firstexample.repository.ChatMessageRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,15 +22,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles( {"mocktest", "default" }) // use "dummy" if you like the DevChatMesageService itself
+@ActiveProfiles( {"mocktest"}) // use "dummy" if you like the DevChatMesageService itself
 class ChatMessageServiceImplTest {
-
   Logger logger = LoggerFactory.getLogger(ChatMessageRepositoryTest.class);
 
-  // @Qualifier("devChatMessageServiceImpl")
-  // @Qualifier("chatMessageServiceImpl")
   @Autowired
   private ChatMessageService chatMessageService;
+
+  @Autowired
+  @Qualifier("chatMessageRepositoryStubImpl")
+  private ChatMessageRepository chatMessageRepository;
 
   @Autowired
   private SingletonPropertyExample singletonPropertyExample;

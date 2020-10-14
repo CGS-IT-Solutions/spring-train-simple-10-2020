@@ -26,7 +26,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-// @ExtendWith(SpringExtension.class)
 //@ActiveProfiles( {"mocktest", "default" }) // use "dummy" if you like the DevChatMesageService itself
 class ChatMessageServiceImplMockitoTest {
 

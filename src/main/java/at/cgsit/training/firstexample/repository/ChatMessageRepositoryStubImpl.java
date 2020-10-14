@@ -5,14 +5,17 @@ import at.cgsit.training.firstexample.services.DevChatMessageServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Primary
 @Profile("mocktest")
 public class ChatMessageRepositoryStubImpl implements ChatMessageRepository {
 
@@ -20,12 +23,12 @@ public class ChatMessageRepositoryStubImpl implements ChatMessageRepository {
 
   @Override public List<ChatMessage> findBySender(String sender) {
     logger.info("findBySender {}", sender);
-    return null;
+    return Collections.EMPTY_LIST;
   }
 
   @Override public List<ChatMessage> findByXYZ(String sender) {
     logger.info("findByXYZ {}", sender);
-    return null;
+    return Collections.EMPTY_LIST;
   }
 
   /**
