@@ -3,6 +3,7 @@ package at.cgsit.training.firstexample.services;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
 import at.cgsit.training.firstexample.dto.ChatMessageDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -19,5 +20,4 @@ public interface ChatMessageService {
   void delete(Long id);
 
   ChatMessage saveOrUpdateChatMessageDTO(ChatMessageDTO cmDTO);
-
 }
