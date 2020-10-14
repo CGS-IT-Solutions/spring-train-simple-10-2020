@@ -1,5 +1,7 @@
 package at.cgsit.training.firstexample.dao;
 
+import at.cgsit.training.firstexample.chat.model.ChatMessage;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,4 +17,7 @@ public interface IAbstractJpaDao<T extends Serializable> {
   void delete(T entity);
 
   void deleteById(long entityId);
+
+  public ChatMessage findOneSpezial(long id);
+
 }

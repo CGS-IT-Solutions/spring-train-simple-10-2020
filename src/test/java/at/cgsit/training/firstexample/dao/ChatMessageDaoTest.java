@@ -16,6 +16,15 @@ class ChatMessageDaoTest {
   @Autowired
   private IAbstractJpaDao<ChatMessage> chatMessageDao;
 
+
+  @Test
+  public void testCustomConnection() {
+
+    ChatMessage oneSpezial = chatMessageDao.findOneSpezial(1);
+    assertThat(oneSpezial).isNotNull();
+
+  }
+
   @Test
   public void testPersistence() {
     ChatMessage chatMessage = TestDataGenerator.getChatMessage();

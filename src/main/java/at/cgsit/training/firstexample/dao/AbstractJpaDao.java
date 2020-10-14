@@ -1,5 +1,6 @@
 package at.cgsit.training.firstexample.dao;
 
+import at.cgsit.training.firstexample.chat.model.ChatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,4 +43,9 @@ public abstract class AbstractJpaDao< T extends Serializable> implements IAbstra
     T entity = findOne( entityId );
     delete( entity );
   }
+
+  public ChatMessage findOneSpezial(long id){
+    throw new RuntimeException("not implemented");
+  }
+
 }
