@@ -14,4 +14,8 @@ public interface ChatMessageRepository extends CrudRepository<ChatMessage, Long>
 
   List<ChatMessage> findBySender(String sender);
 
+  @Query( value = "SELECT msg FROM ChatMessage msg WHERE msg.sender LIKE :sender order by msg.erstelldatum desc")
+  List<ChatMessage> findByXYZ( @Param("sender") String sender);
+
+
 }

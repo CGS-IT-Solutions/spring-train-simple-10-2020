@@ -7,9 +7,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import at.cgsit.training.firstexample.componenten.SingletonPropertyExample;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +27,9 @@ import java.util.List;
 @SpringBootTest
 public class ChatMessageRepositoryTest {
 
+  Logger logger = LoggerFactory.getLogger(ChatMessageRepositoryTest.class);
+
+
   @Autowired
   private ChatMessageRepository chatMessageRepository;
 
@@ -36,10 +42,20 @@ public class ChatMessageRepositoryTest {
   }
 
   @Test
+  public void testFindBySenderWithOrderBy() {
+
+    List<ChatMessage> bySender = chatMessageRepository.findByXYZ("Chris");
+
+    bySender.stream().forEach( e -> logger.info("sender {} time {}", e.getSender(), e.getErstelldatum() ));
+
+    assertThat(bySender).isNotNull();
+    assertThat(bySender.size()).isGreaterThan(1);
+  }
+
+
+  @Test
   public void testFindBySender() {
-
     List<ChatMessage> bySender = chatMessageRepository.findBySender("Chris");
-
     assertThat(bySender).isNotNull();
     assertThat(bySender.size()).isGreaterThan(1);
   }

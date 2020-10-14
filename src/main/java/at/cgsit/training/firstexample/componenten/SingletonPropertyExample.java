@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 // @PropertySource("file:${app.home}/app.properties")
 public class SingletonPropertyExample {
 
-  Logger logger = LoggerFactory.getLogger(TestComponent.class);
+  Logger logger = LoggerFactory.getLogger(SingletonPropertyExample.class);
 
   @Autowired
   Environment env;
