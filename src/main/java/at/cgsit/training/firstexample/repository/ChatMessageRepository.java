@@ -4,12 +4,14 @@ import at.cgsit.training.firstexample.chat.model.ChatMessage;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * spring data respository
  */
+@Repository
 public interface ChatMessageRepository extends CrudRepository<ChatMessage, Long> {
 
   List<ChatMessage> findBySender(String sender);
