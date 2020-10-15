@@ -98,8 +98,16 @@
     @RequestParam("id") 
     http://localhost:8080/rest/chatmessages/byRequestParam?id=5    
                
-      
-      
+### Aufgabe 12:
+    verwende einen nicht zum Datentyp Long konvertierbaren Input
+    http://localhost:8080/trainerrest/chatmessages/byRequestParam?id=asdfasdf      
+    (type=Bad Request, status=400) sollte die Browser Antwort sein
+    
+    Aktivere Controller Advice CustomRestExceptionHandler
+    Struktuierter Fehler Response sollte die Folge sein 
+    
+    
+    
       
       
       
