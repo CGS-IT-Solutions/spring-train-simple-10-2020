@@ -33,5 +33,22 @@ Aufgabe 15.10. 4:
     
     Beide Methoden sollen List<ChatMessage> als return Liste liefern
 
-
+## Aufgabe 6:
+      Schreibe eine POST methode mit folgender Annotation
+      
+      @PostMapping("/chatmessages")
+      um eine Chat Message einzufügen
+      für die Input POST Chat Message bitte 
+      
+      @RequestBody als Pramater Annotation verwenden.
+      
+      Als Standard Spring Test implementieren
+      
+      
+      
+      
+      
+      
+      
+      
 
