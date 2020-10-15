@@ -14,10 +14,20 @@
 
     <link href="../../static/css/spring-core.css"
           th:href="@{/css/spring-core.css}" rel="stylesheet" media="screen"/>
+    <style>
+        body {
+            background-color: #f8f4f4;
+        }
+        div.ex1 {
+            width: 500px;
+            margin: auto;
+            border: 3px solid #73AD21;
+        }
+    </style>
 
 </head>
 <body>
-<div class="container">
+<div class="container" align="center" >
     <div th:if="${not #lists.isEmpty(chatmessagelist)}">
         <h2>Chat Message List</h2>
         <table class="table table-striped">
@@ -41,12 +51,19 @@
                 <td><a th:href="${'/chatmessage/delete/' + message.id}">Delete</a> </td>
             </tr>
         </table>
-    </div>
     <div class="row">
         <div class="col-sm-3">
             <a href="/chatmessage/new">New Chat Message</a>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/logout">Log Out</a>
+        </div>
+    </div>
+    </div>
+
 </div>
 
 </body>

@@ -37,12 +37,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // Use this to enable the tomcat basic authentication (tomcat popup rather than spring login page)
     // Note that the CSRf token is disabled for all requests
     log.info("Disabling CSRF, enabling basic authentication...");
+
+    // .httpBasic();
     http
         .authorizeRequests()
-        //.antMatchers("/login.html").permitAll()
+        .antMatchers("/index.html", "/error.html", "/login_error.html")
+        .permitAll()
         .antMatchers("/**").authenticated() // These urls are allowed by any authenticated user
         .and()
-        // .httpBasic();
         .formLogin()
         //.defaultSuccessUrl( "/chatmessage/list" )
         .loginPage("/login.html")
@@ -53,8 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .permitAll()
         .and()
         .logout()
-        //.logoutSuccessHandler(myLogoutSuccessHandler)
+        .logoutUrl("/logout")
+        .logoutSuccessHandler(myLogoutSuccessHandler)
         .logoutSuccessUrl("/index.html");
+
 
     http.authorizeRequests()
         .antMatchers("/actuator/**").permitAll();
@@ -71,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       // Get the user credentials from the console (or any other source):
 
       String username = "admin";
-      String password = "admin";
+      String password = "12345";
 
       // Set the inMemoryAuthentication object with the given credentials:
       InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();

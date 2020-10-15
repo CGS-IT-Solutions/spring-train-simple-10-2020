@@ -25,6 +25,6 @@ public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
   public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
       throws IOException {
 
-    logger.info("LOGGED OUT User " + (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    logger.info("LOGGED OUT User");
   }
 }

@@ -13,11 +13,20 @@
 
     <link href="../../static/css/spring-core.css"
           th:href="@{/css/spring-core.css}" rel="stylesheet" media="screen"/>
+    <style>
+        body {
+            background-color: #9a9696;
+        }
+        div.ex1 {
+            width: 500px;
+            margin: auto;
+            border: 3px solid #73AD21;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-
-    <h2>Product Details</h2>
+<div class="container ex1" align="center">
+    <h2>Chat Message Create </h2>
     <div>
         <form class="form-horizontal" th:object="${chatMessageform}" th:action="@{/chatmessage}" method="post">
 
