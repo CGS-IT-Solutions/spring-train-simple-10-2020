@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>SSpring Tutorial - Chat Message Messages</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/jquery.min.js"
+            th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{/css/spring-core.css}" rel="stylesheet" media="screen"/>
+
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(chatmessagelist)}">
+        <h2>Chat Message List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Sender</th>
+                <th>Empfänger</th>
+                <th>Nachricht</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            <tr th:each="message : ${chatmessagelist}">
+                <td th:text="${message.id}"></td>
+                <td th:text="${message.xyz}"></td>
+                <td th:text="${message.xdf}"></td>
+                <td th:text="${message.content}"></td>
+
+                <td><a th:href="${'/chatmessage/show/' + message.id}">View</a> </td>
+                <td><a th:href="${'/chatmessage/edit/' + message.id}">Edit</a> </td>
+                <td><a th:href="${'/chatmessage/delete/' + message.id}">Delete</a> </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="/chatmessage/new">New Chat Message</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
