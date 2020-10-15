@@ -75,7 +75,12 @@
     stellt mittels Controller Advice annotation ein mapping zur
     verfügung  @ControllerAdvice
     
+## Aufgabe 8:
+    Erweitere Controller test für findById
+    nutzte Assertions.assertThrows(ChatMessageNotFoundException.class .. )
+    um die erwartete excpetion bei falscher ID zu prüfen.
     
+        
                
       
       
