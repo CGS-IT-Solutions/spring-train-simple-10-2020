@@ -93,7 +93,10 @@
     mit delete by ID als Pfad Variable 
     "/chatmessagess/{id}" Long id
     
-    
+## Aufgabe 11:
+    verwende request query parameter für ein find by ID
+    @RequestParam("id") 
+    http://localhost:8080/rest/chatmessages/byRequestParam?id=5    
                
       
       
