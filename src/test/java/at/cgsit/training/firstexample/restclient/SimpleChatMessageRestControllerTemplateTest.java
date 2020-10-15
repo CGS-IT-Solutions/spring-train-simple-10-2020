@@ -21,7 +21,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class SimpleMongoDbRestControllerTemplateTest {
+class SimpleChatMessageRestControllerTemplateTest {
 
     @LocalServerPort
     private int port;
@@ -37,14 +37,10 @@ class SimpleMongoDbRestControllerTemplateTest {
 
     List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
     interceptors.add(new LoggingRequestInterceptor());
-
     // restTemplate.getRestTemplate().setInterceptors(interceptors);
-
     restTemplate.getRestTemplate().getInterceptors().add(new LoggingRequestInterceptor());
-
     restTemplate.getRestTemplate()
         .setRequestFactory(new BufferingClientHttpRequestFactory(new SimpleClientHttpRequestFactory()));
-
   }
 
   @Test
