@@ -10,6 +10,9 @@ public class SpringTrainSimple012020Application {
 
     SpringApplication.run(SpringTrainSimple012020Application.class, args);
 
+
+    // http://localhost:8080/simplerest/echo
+
   }
 
 }
