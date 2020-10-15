@@ -62,6 +62,22 @@
       
       Als Standard Spring Test implementieren
       
+      Trainer: pushed as createChatMassage in Trainier Controller
+               /trainerrest neue base url 
+               
+## Aufgabe 7:
+    implementiere eine Rest Controller methode findByID
+    @GetMapping("/chatmessages/{id}") 
+    
+    falls diese id nicht gefunden wird, werfe die neue 
+    Exception ChatMessageNotFoundException
+    Die Klasse: ChatMessageNotFoundAdvice
+    stellt mittels Controller Advice annotation ein mapping zur
+    verfügung  @ControllerAdvice
+    
+    
+               
+      
       
       
       
