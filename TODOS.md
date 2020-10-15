@@ -4,7 +4,10 @@ Aufgabe 15.10. 1:
   mit neuer Methode mit Pfad Variable: 
     @GetMapping("/properties/{property}")
     @PathVariable
-
+ 
+  Wenn implementiert, dann im Browser aufrufen.
+  
+ 
 
 
 
