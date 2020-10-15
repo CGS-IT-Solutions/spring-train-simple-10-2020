@@ -23,12 +23,15 @@ Aufgabe 15.10. 4:
     e. Autowire den neuen Rest Controller und teste die Methoden
     
 ## Aufgabe 5:
-    Schreibe einen ChatMessageRestController
+    Im java package rest
+    schreibe einen ChatMessageRestController
     mit dem Basis pfad /rest
-    und den Methoden
+    und den Get-Methoden
     -> /chatmessages --> liste ALLE Messages
     -> /chatmessages/findBySender/{sender}
-         
+    -> injecte dazu das ChatMessageService und verwende es
+    
+    Beide Methoden sollen List<ChatMessage> als return Liste liefern
 
 
 
