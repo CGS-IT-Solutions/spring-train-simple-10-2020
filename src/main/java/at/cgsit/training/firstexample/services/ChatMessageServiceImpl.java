@@ -66,10 +66,14 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 
   @Override
   public ChatMessage saveOrUpdateChatMessageDTO(ChatMessageDTO cmDTO){
-    ChatMessage savedProduct = saveOrUpdate(chatMessageDTOToChatMessage.convert(cmDTO));
+    ChatMessage savedMessage = saveOrUpdate(chatMessageDTOToChatMessage.convert(cmDTO));
 
-    logger.info("Saved Chat Message Id: {}", savedProduct.getId());
-    return savedProduct;
+    if(savedMessage.getSender().equalsIgnoreCase("Gesperrt")) {
+      throw new RuntimeException("Dieser User ist gesperrt");
+    }
+
+    logger.info("Saved Chat Message Id: {}", savedMessage.getId());
+    return savedMessage;
   }
 
 
