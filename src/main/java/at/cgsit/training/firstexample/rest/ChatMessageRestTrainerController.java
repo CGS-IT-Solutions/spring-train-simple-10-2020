@@ -1,17 +1,21 @@
 package at.cgsit.training.firstexample.rest;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
+import at.cgsit.training.firstexample.config.WebSecurityConfig;
 import at.cgsit.training.firstexample.exceptions.ChatMessageNotFoundException;
 import at.cgsit.training.firstexample.repository.ChatMessageRepository;
 import at.cgsit.training.firstexample.services.ChatMessageService;
 import at.cgsit.training.firstexample.translator.ChatMessageToChatMessageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/trainerrest")
+@Secured(WebSecurityConfig.ROLE_READ)
 public class ChatMessageRestTrainerController {
 
   private ChatMessageService chatMessageService;
@@ -36,17 +40,27 @@ public class ChatMessageRestTrainerController {
   }
 
 
-  @GetMapping("/chatmessages")
+  @GetMapping(value = "/chatmessages",
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = { MediaType.APPLICATION_JSON_VALUE,
+                   MediaType.APPLICATION_XML_VALUE })
   public List<ChatMessage> all() {
     return chatMessageService.listAll();
   }
 
-  @GetMapping("/chatmessages/findBySender/{sender}")
+  @GetMapping( value = "/chatmessages/findBySender/{sender}",
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+  @Secured(WebSecurityConfig.ROLE_POWER_USER)
   public List<ChatMessage> findBySender(@PathVariable String sender) {
     return chatMessageService.findBySender(sender);
   }
 
-  @PostMapping("/chatmessages") ChatMessage createChatMassage(@RequestBody ChatMessage chatMessage) {
+  @PostMapping(value = "/chatmessages",
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = { MediaType.APPLICATION_JSON_VALUE, //
+      MediaType.APPLICATION_XML_VALUE })
+  public ChatMessage createChatMassage(@RequestBody ChatMessage chatMessage) {
     return repository.save(chatMessage);
   }
 

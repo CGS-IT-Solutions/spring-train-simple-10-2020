@@ -2,6 +2,9 @@ package at.cgsit.training.firstexample.controllers;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
 import at.cgsit.training.firstexample.dto.ChatMessageDTO;
+import at.cgsit.training.firstexample.requestsope.GlobalCounter;
+import at.cgsit.training.firstexample.requestsope.GlobalCounterConfig;
+import at.cgsit.training.firstexample.requestsope.RandomMessageGenerator;
 import at.cgsit.training.firstexample.services.ChatMessageService;
 import at.cgsit.training.firstexample.translator.ChatMessageToChatMessageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,13 @@ public class ChatMessageController {
   private ChatMessageService chatMessageService;
 
   private ChatMessageToChatMessageDTO cmToCMDTO;
+
+  @Autowired
+  private RandomMessageGenerator generator;
+
+  @Autowired
+  private GlobalCounter globalCounter;
+
 
   @Autowired
   public void setCmToCMDTO(ChatMessageToChatMessageDTO cmToCMDTO) {
@@ -53,6 +63,10 @@ public class ChatMessageController {
 
   @RequestMapping({"/chatmessage/list", "/chatmessage"})
   public String listChatMessages(Model model){
+
+    String message = generator.getMessage();
+    globalCounter.getCounter();
+
     model.addAttribute("chatmessagelist", chatMessageService.listAll());
     return "chatmessage/list";
   }
@@ -69,6 +83,11 @@ public class ChatMessageController {
     ChatMessageDTO chatMessageDTO = cmToCMDTO.convert(product);
 
     model.addAttribute("chatMessageform", chatMessageDTO);
+
+    String message = generator.getMessage();
+    globalCounter.getCounter();
+    model.addAttribute("genCountValue", generator.getCounter());
+
     return "chatmessage/chatmessageform";
   }
 
@@ -79,11 +98,16 @@ public class ChatMessageController {
   }
 
   @RequestMapping(value = "/chatmessage", method = RequestMethod.POST)
-  public String saveOrUpdateChatMessage(@Valid @ModelAttribute("chatMessageform") ChatMessageDTO chatMessageDTO, BindingResult bindingResult){
+  public String saveOrUpdateChatMessage(@Valid @ModelAttribute("chatMessageform") ChatMessageDTO chatMessageDTO,
+      BindingResult bindingResult,  Model model ){
 
     if(bindingResult.hasErrors()){
       return "chatmessage/chatmessageform";
     }
+    String message = generator.getMessage();
+    globalCounter.getCounter();
+    model.addAttribute("genCountValue", generator.getCounter());
+
     ChatMessage savedProduct = chatMessageService.saveOrUpdateChatMessageDTO(chatMessageDTO);
     return "redirect:/chatmessage/show/" + savedProduct.getId();
   }
