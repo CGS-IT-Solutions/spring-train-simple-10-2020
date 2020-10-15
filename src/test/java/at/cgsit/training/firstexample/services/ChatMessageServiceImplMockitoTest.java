@@ -1,8 +1,10 @@
 package at.cgsit.training.firstexample.services;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
+import at.cgsit.training.firstexample.dto.ChatMessageDTO;
 import at.cgsit.training.firstexample.repository.ChatMessageRepository;
 import at.cgsit.training.firstexample.repository.ChatMessageRepositoryTest;
+import at.cgsit.training.firstexample.translator.ChatMessageToChatMessageDTO;
 import at.cgsit.training.firstexample.utils.TestDataGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,6 +30,7 @@ import static org.mockito.Mockito.when;
 //@ActiveProfiles( {"mocktest", "default" }) // use "dummy" if you like the DevChatMesageService itself
 class ChatMessageServiceImplMockitoTest {
 
+  public static final String MOCKSENDER = "TTTT";
   Logger logger = LoggerFactory.getLogger(ChatMessageRepositoryTest.class);
 
   @Autowired
@@ -36,12 +39,29 @@ class ChatMessageServiceImplMockitoTest {
   @MockBean
   private ChatMessageRepository mockRepository;
 
+  @Autowired
+  private ChatMessageToChatMessageDTO converter;
+
+  @Test
+  public void testsaveOrUpdateChatMessageDTOSimple() {
+      ChatMessage chatMessage = TestDataGenerator.getChatMessage();
+      chatMessage.setSender(MOCKSENDER);
+      ChatMessageDTO cmDTO = converter.convert(chatMessage);
+
+      when(mockRepository.save(ArgumentMatchers.any())).thenReturn(chatMessage);
+
+    ChatMessage chatMessageSaved = chatMessageService.saveOrUpdateChatMessageDTO(cmDTO);
+    assertThat(chatMessageSaved).isNotNull();
+
+
+  }
+
   @ParameterizedTest
   @ValueSource(strings = { "chris","franky"})
   public void testFindBySenderWithOrderBy(String userName) {
 
     ChatMessage chatMessage = TestDataGenerator.getChatMessage();
-    chatMessage.setSender("TTTT");
+    chatMessage.setSender(MOCKSENDER);
     ArrayList<ChatMessage> chatMessages = new ArrayList<>();
     chatMessages.add(chatMessage);
 
@@ -50,7 +70,7 @@ class ChatMessageServiceImplMockitoTest {
     List<ChatMessage> resultList = chatMessageService.findBySender(userName);
     assertThat(resultList).isNotNull();
     ChatMessage chatMessage1 = resultList.get(0);
-    assertThat(chatMessage1.getSender()).isEqualTo("TTTT");
+    assertThat(chatMessage1.getSender()).isEqualTo(MOCKSENDER);
 
   }
 
