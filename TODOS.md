@@ -80,7 +80,20 @@
     nutzte Assertions.assertThrows(ChatMessageNotFoundException.class .. )
     um die erwartete excpetion bei falscher ID zu prüfen.
     
-        
+## Aufgabe 9:
+    Erweitere um ein PUT mapping für update or insert Chat Message
+    mittels: 
+    @PutMapping("/chatmessages/{id}")
+    Mit input parameter ChatMessage als BodyParameter 
+    und ID als path parameter Long id 
+    
+## Aufgabe 10:
+    Erweitere um ein Delete Mapping
+    @DeleteMapping
+    mit delete by ID als Pfad Variable 
+    "/chatmessagess/{id}" Long id
+    
+    
                
       
       
