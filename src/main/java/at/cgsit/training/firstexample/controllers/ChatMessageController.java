@@ -32,6 +32,20 @@ public class ChatMessageController {
     this.chatMessageService = chatMessageService;
   }
 
+  // Login form
+  @RequestMapping("/login.html")
+  public String login() {
+    return "login.html";
+  }
+
+  // Login form with error
+  @RequestMapping("/login-error.html")
+  public String loginError(Model model) {
+    model.addAttribute("loginError", true);
+    return "login.html";
+  }
+
+
   @RequestMapping("/")
   public String redirToList(){
     return "redirect:/chatmessage/list";

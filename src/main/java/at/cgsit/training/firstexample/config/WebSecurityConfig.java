@@ -1,5 +1,7 @@
 package at.cgsit.training.firstexample.config;
 
+import at.cgsit.training.firstexample.security.MyLoginSuccessHandler;
+import at.cgsit.training.firstexample.security.MyLogoutSuccessHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +19,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+  private static final Logger log = LogManager.getLogger();
 
-    private static final Logger log = LogManager.getLogger();
+  @Autowired
+  private MyLogoutSuccessHandler myLogoutSuccessHandler;
+
+  @Autowired
+  private MyLoginSuccessHandler myLoginSuccessHandler;
+
 
   public WebSecurityConfig() {
   }
@@ -34,7 +42,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //.antMatchers("/login.html").permitAll()
         .antMatchers("/**").authenticated() // These urls are allowed by any authenticated user
         .and()
-        .httpBasic();
+        // .httpBasic();
+        .formLogin()
+        .successHandler(myLoginSuccessHandler)
+        //.defaultSuccessUrl( "/chatmessage/list" )
+        .loginPage("/login.html")
+        //.loginProcessingUrl("/chatmessage/list")
+        .permitAll()
+        .failureUrl("/login-error.html")
+        .permitAll()
+        .and()
+        .logout()
+        .logoutSuccessHandler(myLogoutSuccessHandler)
+        .logoutSuccessUrl("/index.html");
 
     http.authorizeRequests()
         .antMatchers("/actuator/**").permitAll();
