@@ -32,8 +32,8 @@
 
             <tr th:each="message : ${chatmessagelist}">
                 <td th:text="${message.id}"></td>
-                <td th:text="${message.xyz}"></td>
-                <td th:text="${message.xdf}"></td>
+                <td th:text="${message.sender}"></td>
+                <td th:text="${message.recipient}"></td>
                 <td th:text="${message.content}"></td>
 
                 <td><a th:href="${'/chatmessage/show/' + message.id}">View</a> </td>
