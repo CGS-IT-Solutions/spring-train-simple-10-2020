@@ -7,7 +7,6 @@ import at.cgsit.training.firstexample.repository.ChatMessageRepositoryTest;
 import at.cgsit.training.firstexample.translator.ChatMessageToChatMessageDTO;
 import at.cgsit.training.firstexample.utils.TestDataGenerator;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentMatchers;
@@ -16,18 +15,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-//@ActiveProfiles( {"mocktest", "default" }) // use "dummy" if you like the DevChatMesageService itself
 class ChatMessageServiceImplMockitoTest {
 
   public static final String MOCKSENDER = "TTTT";
@@ -50,10 +45,8 @@ class ChatMessageServiceImplMockitoTest {
 
       when(mockRepository.save(ArgumentMatchers.any())).thenReturn(chatMessage);
 
-    ChatMessage chatMessageSaved = chatMessageService.saveOrUpdateChatMessageDTO(cmDTO);
-    assertThat(chatMessageSaved).isNotNull();
-
-
+      ChatMessage chatMessageSaved = chatMessageService.saveOrUpdateChatMessageDTO(cmDTO);
+      assertThat(chatMessageSaved).isNotNull();
   }
 
   @ParameterizedTest
