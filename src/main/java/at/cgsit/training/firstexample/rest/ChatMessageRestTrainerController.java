@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/trainerrest")
-@Secured(WebSecurityConfig.ROLE_READ)
+@Secured({"ROLE_READ"})
 public class ChatMessageRestTrainerController {
 
   private ChatMessageService chatMessageService;
@@ -40,26 +40,18 @@ public class ChatMessageRestTrainerController {
   }
 
 
-  @GetMapping(value = "/chatmessages",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = { MediaType.APPLICATION_JSON_VALUE,
-                   MediaType.APPLICATION_XML_VALUE })
+  @GetMapping(value = "/chatmessages")
   public List<ChatMessage> all() {
     return chatMessageService.listAll();
   }
 
-  @GetMapping( value = "/chatmessages/findBySender/{sender}",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+  @GetMapping( value = "/chatmessages/findBySender/{sender}")
   @Secured(WebSecurityConfig.ROLE_POWER_USER)
   public List<ChatMessage> findBySender(@PathVariable String sender) {
     return chatMessageService.findBySender(sender);
   }
 
-  @PostMapping(value = "/chatmessages",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = { MediaType.APPLICATION_JSON_VALUE, //
-      MediaType.APPLICATION_XML_VALUE })
+  @PostMapping(value = "/chatmessages")
   public ChatMessage createChatMassage(@RequestBody ChatMessage chatMessage) {
     return repository.save(chatMessage);
   }
