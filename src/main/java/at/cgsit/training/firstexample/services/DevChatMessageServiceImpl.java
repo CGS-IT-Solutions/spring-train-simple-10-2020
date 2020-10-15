@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @Transactional
-@Profile("dummy")
+// @Profile("dummy")
 public class DevChatMessageServiceImpl implements ChatMessageService {
 
   Logger logger = LoggerFactory.getLogger(DevChatMessageServiceImpl.class);

@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-// @Primary
-// @Profile({"default", "prod"})
+@Primary
 @Transactional(propagation = Propagation.REQUIRED)
 public class ChatMessageServiceImpl implements ChatMessageService {
 
