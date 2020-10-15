@@ -27,6 +27,7 @@ class ChatMessageServiceImplTest {
   Logger logger = LoggerFactory.getLogger(ChatMessageRepositoryTest.class);
 
   @Autowired
+  // @Qualifier("devChatMessageServiceImpl")
   private ChatMessageService chatMessageService;
 
   @Autowired
