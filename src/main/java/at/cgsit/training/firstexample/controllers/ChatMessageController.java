@@ -33,7 +33,7 @@ public class ChatMessageController {
   }
 
   // Login form
-  @RequestMapping("/login.html")
+  @RequestMapping( {"/login.html", "/login"})
   public String login() {
     return "login.html";
   }

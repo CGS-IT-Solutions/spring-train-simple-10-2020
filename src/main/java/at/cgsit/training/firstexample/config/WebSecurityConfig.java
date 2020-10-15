@@ -44,16 +44,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         // .httpBasic();
         .formLogin()
-        .successHandler(myLoginSuccessHandler)
         //.defaultSuccessUrl( "/chatmessage/list" )
         .loginPage("/login.html")
+        // .successHandler(myLoginSuccessHandler)
         //.loginProcessingUrl("/chatmessage/list")
         .permitAll()
         .failureUrl("/login-error.html")
         .permitAll()
         .and()
         .logout()
-        .logoutSuccessHandler(myLogoutSuccessHandler)
+        //.logoutSuccessHandler(myLogoutSuccessHandler)
         .logoutSuccessUrl("/index.html");
 
     http.authorizeRequests()
