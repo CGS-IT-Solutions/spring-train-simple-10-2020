@@ -11,11 +11,13 @@ import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
 @RequestMapping("/trainerrest")
-@Secured({"ROLE_READ"})
+//@Secured({"ROLE_READ"})
+@RolesAllowed({"ROLE_READ"})
 public class ChatMessageRestTrainerController {
 
   private ChatMessageService chatMessageService;
@@ -42,11 +44,12 @@ public class ChatMessageRestTrainerController {
 
   @GetMapping(value = "/chatmessages")
   public List<ChatMessage> all() {
-    return chatMessageService.listAll(); 
+    return chatMessageService.listAll();
   }
 
   @GetMapping( value = "/chatmessages/findBySender/{sender}")
-  @Secured(WebSecurityConfig.ROLE_POWER_USER)
+  //@Secured({"ROLE_POWER_USER"})
+  @RolesAllowed({"ROLE_POWER_USER"})
   public List<ChatMessage> findBySender(@PathVariable String sender) {
     return chatMessageService.findBySender(sender);
   }
