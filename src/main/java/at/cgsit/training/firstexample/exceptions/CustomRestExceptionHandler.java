@@ -25,7 +25,7 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-// @ ControllerAdvice
+@ControllerAdvice
 public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 
   // 400
@@ -34,7 +34,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
       final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
 
     logger.info("Custom Handler " + ex.getClass().getName());
-    //
+
     final List<String> errors = new ArrayList<String>();
 
     for (final FieldError error : ex.getBindingResult().getFieldErrors()) {

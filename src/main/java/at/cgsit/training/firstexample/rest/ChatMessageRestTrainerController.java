@@ -51,4 +51,38 @@ public class ChatMessageRestTrainerController {
   }
 
 
+  @GetMapping("/chatmessages/{id}")
+  ChatMessage findById(@PathVariable Long id) {
+    return repository.findById(id)
+        .orElseThrow(() -> new ChatMessageNotFoundException(id));
+  }
+
+  @GetMapping("/chatmessages/byRequestParam")
+  ChatMessage findByRPid(@RequestParam("id") Long id) {
+    return repository.findById(id)
+        .orElseThrow(() -> new ChatMessageNotFoundException(id));
+  }
+
+
+  @PutMapping("/chatmessages/{id}")
+  ChatMessage replaceEmployee(@RequestBody ChatMessage chatMessage, @PathVariable Long id) {
+
+    return repository.findById(id)
+        .map(foundCM -> {
+          foundCM.setSender(chatMessage.getSender());
+          foundCM.setContent(chatMessage.getContent());
+          foundCM.setRecipient(chatMessage.getRecipient());
+          return repository.save(foundCM);
+        })
+        .orElseGet(() -> {
+          chatMessage.setId(id);
+          return repository.save(chatMessage);
+        });
+  }
+
+  @DeleteMapping("/chatmessagess/{id}")
+  void deleteEmployee(@PathVariable Long id) {
+    repository.deleteById(id);
+  }
+
 }
