@@ -105,6 +105,18 @@
     
     Aktivere Controller Advice CustomRestExceptionHandler
     Struktuierter Fehler Response sollte die Folge sein 
+
+    Output erwartung vom Error Handler:
+        
+    // http://localhost:8080/trainerrest/chatmessages/asdfasdf
+        
+        {
+          "status": "BAD_REQUEST",
+          "message": "Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: \"asdfasdf\"",
+          "errors": [
+            "id should be of type java.lang.Long"
+          ]
+        }    
     
     
     
