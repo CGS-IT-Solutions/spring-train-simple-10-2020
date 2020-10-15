@@ -32,7 +32,7 @@ public class ChatMessageRestMockMvcTest {
 
     String json = mvcResult.getResponse().getContentAsString();
 
-    // ChatMessage object = (ChatMessage)new ObjectMapper().readValue(json, ChatMessage.class);
+    ChatMessage object = (ChatMessage)new ObjectMapper().readValue(json, ChatMessage.class);
 
     assertThat(json).isNotNull();
   }
