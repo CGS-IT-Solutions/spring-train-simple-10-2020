@@ -42,7 +42,7 @@ public class ChatMessageRestTrainerController {
 
   @GetMapping(value = "/chatmessages")
   public List<ChatMessage> all() {
-    return chatMessageService.listAll();
+    return chatMessageService.listAll(); 
   }
 
   @GetMapping( value = "/chatmessages/findBySender/{sender}")
