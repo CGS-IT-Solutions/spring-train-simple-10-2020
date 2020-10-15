@@ -33,6 +33,24 @@ Aufgabe 15.10. 4:
     
     Beide Methoden sollen List<ChatMessage> als return Liste liefern
 
+    Beide Methoden sollen List<ChatMessage> als return Liste liefern
+
+    http://localhost:8080/rest/chatmessages 
+    soll Liste der Messages liefern etwa so:
+    
+    // 20201015114932
+    // http://localhost:8080/rest/chatmessages
+    
+    [
+      {
+        "id": 2,
+        "type": "CHAT",
+        "content": "test ChatMessageDaoTest",
+        "sender": "john doe",
+        "recipient": "frank",
+        "erstelldatum": "2020-10-14T21:20:19.785556"
+      }, ...
+
 ## Aufgabe 6:
       Schreibe eine POST methode mit folgender Annotation
       
