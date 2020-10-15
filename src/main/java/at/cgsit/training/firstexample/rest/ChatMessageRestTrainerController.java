@@ -46,9 +46,6 @@ public class ChatMessageRestTrainerController {
     return chatMessageService.findBySender(sender);
   }
 
-  @PostMapping("/chatmessages") ChatMessage createChatMassage(@RequestBody ChatMessage chatMessage) {
-    return repository.save(chatMessage);
-  }
 
 
 }

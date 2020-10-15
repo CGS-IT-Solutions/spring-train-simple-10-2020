@@ -1,7 +1,9 @@
 package at.cgsit.training.firstexample.rest;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
+import at.cgsit.training.firstexample.exceptions.ChatMessageNotFoundException;
 import at.cgsit.training.firstexample.utils.TestDataGenerator;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,13 +19,24 @@ class ChatMessageRestTrainerControllerTest {
 
   @Test
   void testCreateChatMessage() {
-
-    ChatMessage chatMessage = TestDataGenerator.getChatMessage();
+   ChatMessage chatMessage = TestDataGenerator.getChatMessage();
     chatMessage.setContent("Rest controller test ");
 
     ChatMessage chatMassage = controller.createChatMassage(chatMessage);
     assertThat(chatMassage).isNotNull();
   }
+
+  @Test
+  void testFindByIdNotFound() {
+    ChatMessage chatMessage = TestDataGenerator.getChatMessage();
+    chatMessage.setContent("Rest controller test ");
+
+    Assertions.assertThrows(ChatMessageNotFoundException.class, () -> {
+      controller.findById(666666L);
+    });
+
+  }
+
 
 }
 
