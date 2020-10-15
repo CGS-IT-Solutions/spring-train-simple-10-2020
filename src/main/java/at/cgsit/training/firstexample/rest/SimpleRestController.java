@@ -15,7 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/simplerest")
 public class SimpleRestController {
+
   Logger logger = LoggerFactory.getLogger(SimpleRestController.class);
+
+  @Autowired
+  private PropertiesSample propertiesSample;
+
+  @Autowired
+  private SingletonPropertyExample singletonPropertyExample;
 
   @Autowired
   @Qualifier("testQuaifierComponent")
@@ -25,6 +32,23 @@ public class SimpleRestController {
   String echo() {
     logger.info("echo");
     return testQualifier.echo("");
+  }
+
+  @GetMapping("/properties/{property}")
+  String getProperty(@PathVariable String property) {
+    logger.info("getProperty /properties called with value {}", property);
+    logger.info("Working Directory = " + System.getProperty("user.dir"));
+    return propertiesSample.getMyValue();
+  }
+
+  @GetMapping("/properties2/{property}")
+  String getPropertySingleton(@PathVariable String property) {
+
+    logger.info("getProperty /properties called with value {}", property);
+
+    logger.info("Working Directory = " + System.getProperty("user.dir"));
+
+    return this.singletonPropertyExample.getMessage() + " echo property: " + property;
   }
 
 }
