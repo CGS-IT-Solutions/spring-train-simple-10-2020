@@ -13,7 +13,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SimpleRestControllerTrainerTest {
   Logger logger = LoggerFactory.getLogger(ChatMessageRepositoryTest.class);
 
-  @Autowired private SimpleRestController controller;
+  @Autowired
+  private SimpleRestController controller;
 
   @Test
   void testGetEcho() {
@@ -28,6 +29,4 @@ class SimpleRestControllerTrainerTest {
     assertThat(greeting).isNotBlank();
     logger.info("greeting: " + greeting);
   }
-
-
 }
