@@ -1,7 +1,6 @@
 package at.cgsit.training.firstexample.services;
 
 import at.cgsit.training.firstexample.chat.model.ChatMessage;
-import at.cgsit.training.firstexample.componenten.SingletonPropertyExample;
 import at.cgsit.training.firstexample.repository.ChatMessageRepository;
 import at.cgsit.training.firstexample.repository.ChatMessageRepositoryTest;
 import at.cgsit.training.firstexample.utils.TestDataGenerator;

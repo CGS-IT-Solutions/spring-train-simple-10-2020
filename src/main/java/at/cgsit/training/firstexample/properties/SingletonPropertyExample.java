@@ -1,5 +1,4 @@
-package at.cgsit.training.firstexample.componenten;
-
+package at.cgsit.training.firstexample.properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,14 +10,14 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-// @PropertySource("classpath:myextra.properties")
-// @PropertySource("file:${app.home}/app.properties")
+@Scope("singleton") // change to prototype
+@PropertySource("classpath:myextra.properties")
 public class SingletonPropertyExample {
 
   Logger logger = LoggerFactory.getLogger(SingletonPropertyExample.class);
 
   @Autowired
-  Environment env;
+  private Environment env;
 
   @Value("${myapp.name}")
   private String name;
@@ -34,4 +33,3 @@ public class SingletonPropertyExample {
     return String.format("Application %s was created by %s", name, author);
   }
 }
-

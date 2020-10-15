@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import at.cgsit.training.firstexample.componenten.SingletonPropertyExample;
 import at.cgsit.training.firstexample.utils.TestDataGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
