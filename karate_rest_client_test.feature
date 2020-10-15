@@ -3,7 +3,6 @@ Feature: JIRA-TICKET-Aufgabe lesen - aufgabe_get_valid.feature
 
   ... ich eine Aufgabe im Detail ansehen
 
-
   Background:
     Given url xxxxxWebservice
 

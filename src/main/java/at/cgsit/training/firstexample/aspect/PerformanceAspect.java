@@ -26,7 +26,7 @@ public class PerformanceAspect {
     Object returnValue = joinPoint.proceed();
 
     long end = System.nanoTime();
-    String methodName = joinPoint.getSignature().getName();
+        String methodName = joinPoint.getSignature().getName();
 
     logger.info("Execution of " + methodName + " took " + TimeUnit.NANOSECONDS.toMillis(end - start) + " ms");
 
