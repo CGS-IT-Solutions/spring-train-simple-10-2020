@@ -46,7 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     log.info("Disabling CSRF, enabling basic authentication...");
 
     // .httpBasic();
-    /*
     http
         .authorizeRequests()
         .antMatchers("/index.html", "/error.html", "/login_error.html")
@@ -71,8 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/actuator/**").permitAll();
         http.csrf().disable();
-     */
 
+    /*
     http.csrf().disable()
         .authorizeRequests()
         .antMatchers("/trainerrest/**")
@@ -92,7 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .logoutSuccessUrl("/")
         .deleteCookies("JSESSIONID")
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
-
+      */
   }
 
   @Bean
