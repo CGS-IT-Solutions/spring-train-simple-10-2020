@@ -87,7 +87,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
         .logout()
-        .logoutUrl("/logout")
+        .logoutUrl("/trainerrest/restlogout")
         .invalidateHttpSession(true)
         .logoutSuccessUrl("/")
         .deleteCookies("JSESSIONID")

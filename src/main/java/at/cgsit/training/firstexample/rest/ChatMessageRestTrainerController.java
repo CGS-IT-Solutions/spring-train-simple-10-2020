@@ -6,6 +6,8 @@ import at.cgsit.training.firstexample.exceptions.ChatMessageNotFoundException;
 import at.cgsit.training.firstexample.repository.ChatMessageRepository;
 import at.cgsit.training.firstexample.services.ChatMessageService;
 import at.cgsit.training.firstexample.translator.ChatMessageToChatMessageDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
@@ -24,6 +26,7 @@ import java.util.List;
 //@Secured({"ROLE_READ"})
 @RolesAllowed({"ROLE_READ"})
 public class ChatMessageRestTrainerController {
+  Logger logger = LoggerFactory.getLogger(ChatMessageRestTrainerController.class);
 
   private ChatMessageService chatMessageService;
 
@@ -48,6 +51,7 @@ public class ChatMessageRestTrainerController {
 
   @GetMapping(value = "/restlogout")
   public void logout(HttpServletRequest request, HttpServletResponse response) {
+    logger.info("log-out");
 
     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     if (auth != null){

@@ -118,7 +118,17 @@
           ]
         }    
     
-    
+# simple user permission denied auf :     
+# http://localhost:8080/trainerrest/chatmessages/findBySender/dasdfasdf     
+
+# mit : 
+# org.springframework.security.access.AccessDeniedException
+
+# {"status":"INTERNAL_SERVER_ERROR","message":"Zugriff verweigert","errors":["error occurred"]}
+
+ 
+
+
     
       
       

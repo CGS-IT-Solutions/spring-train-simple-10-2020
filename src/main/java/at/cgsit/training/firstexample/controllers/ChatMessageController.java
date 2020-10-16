@@ -73,7 +73,11 @@ public class ChatMessageController {
 
   @RequestMapping("/chatmessage/show/{id}")
   public String getChatMessage(@PathVariable String id, Model model){
-    model.addAttribute("chatmessage", chatMessageService.getById(Long.valueOf(id)));
+
+    ChatMessage byId = chatMessageService.getById(Long.valueOf(id));
+
+    model.addAttribute("chatmessage", byId);
+
     return "chatmessage/show";
   }
 

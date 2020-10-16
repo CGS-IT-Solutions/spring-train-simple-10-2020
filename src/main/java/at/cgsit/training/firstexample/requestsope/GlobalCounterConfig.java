@@ -8,9 +8,11 @@ import org.springframework.web.context.annotation.SessionScope;
 import java.util.UUID;
 
 // Should be a Configuration
+@Configuration
 public class GlobalCounterConfig {
 
-  // should be a bean construct method
+  @Bean
+  @ApplicationScope
   public GlobalCounter globalCounter() {
    return new GlobalCounter();
   }
