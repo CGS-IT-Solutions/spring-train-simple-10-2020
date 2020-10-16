@@ -7,11 +7,8 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.UUID;
 
-@Configuration
 public class RandomMessageGeneratorConfig {
 
-  @Bean
-  @SessionScope  // using web specific session scopes
   public RandomMessageGenerator randomMessageBean() {
     UUID uuid = UUID.randomUUID();
     return new RandomMessageGenerator(uuid.toString());

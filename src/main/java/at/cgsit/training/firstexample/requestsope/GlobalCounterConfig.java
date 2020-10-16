@@ -7,11 +7,10 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.UUID;
 
-@Configuration
+// Should be a Configuration
 public class GlobalCounterConfig {
 
-  @Bean
-  @ApplicationScope // using web specific session scopes
+  // should be a bean construct method
   public GlobalCounter globalCounter() {
    return new GlobalCounter();
   }
