@@ -27,6 +27,7 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 
   private ChatMessageDTOToChatMessage chatMessageDTOToChatMessage;
 
+
   @Autowired
   public ChatMessageServiceImpl(ChatMessageRepository chatMessageRepository, ChatMessageDTOToChatMessage chatMessageDTOToChatMessage) {
     this.chatMessageRepository = chatMessageRepository;

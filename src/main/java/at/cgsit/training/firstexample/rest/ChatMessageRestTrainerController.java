@@ -9,9 +9,14 @@ import at.cgsit.training.firstexample.translator.ChatMessageToChatMessageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -39,6 +44,16 @@ public class ChatMessageRestTrainerController {
   @Autowired
   public void setChatMessageService(ChatMessageService chatMessageService) {
     this.chatMessageService = chatMessageService;
+  }
+
+  @GetMapping(value = "/restlogout")
+  public void logout(HttpServletRequest request, HttpServletResponse response) {
+
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    if (auth != null){
+      new SecurityContextLogoutHandler().logout(request, response, auth);
+    }
+    SecurityContextHolder.getContext().setAuthentication(null);
   }
 
 
