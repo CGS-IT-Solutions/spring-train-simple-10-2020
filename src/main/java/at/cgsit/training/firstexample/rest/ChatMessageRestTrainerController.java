@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/trainerrest")
-//@Secured({"ROLE_READ"})
+// @Secured({"ROLE_READ"})
 @RolesAllowed({"ROLE_READ"})
 public class ChatMessageRestTrainerController {
   Logger logger = LoggerFactory.getLogger(ChatMessageRestTrainerController.class);
@@ -67,8 +67,8 @@ public class ChatMessageRestTrainerController {
   }
 
   @GetMapping( value = "/chatmessages/findBySender/{sender}")
-  //@Secured({"ROLE_POWER_USER"})
-  @RolesAllowed({"ROLE_POWER_USER"})
+  @Secured({"ROLE_POWER_USER"})
+  // @RolesAllowed({"ROLE_POWER_USER"})
   public List<ChatMessage> findBySender(@PathVariable String sender) {
     return chatMessageService.findBySender(sender);
   }
